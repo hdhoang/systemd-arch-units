@@ -1,0 +1,11 @@
+[Unit]
+Description=polipo Proxy
+Wants=network.target
+After=tor.service
+
+[Service]
+ExecStart=/usr/bin/polipo
+ExecReload=/bin/kill -USR1 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
