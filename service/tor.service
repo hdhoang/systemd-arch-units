@@ -1,0 +1,13 @@
+[Unit]
+Description=Onion router daemon
+
+[Service]
+EnvironmentFile=/etc/conf.d/tor
+; parse error
+LimitNOFILE=$TOR_MAX_FD
+ExecStart=/usr/bin/tor -f $TOR_CONF --RunAsDaemon 0 $TOR_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
