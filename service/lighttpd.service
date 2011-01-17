@@ -1,6 +1,5 @@
 [Unit]
 Description=Lighttpd Web Server
-Wants=network.target
 
 [Service]
 ExecStartPre=/usr/sbin/lighttpd -t -f /etc/lighttpd/lighttpd.conf
