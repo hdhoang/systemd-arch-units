@@ -4,8 +4,10 @@ Wants=update-addresses.service
 
 [Service]
 Type=oneshot
-EnvironmentFile=/etc/conf.d/6in4
+StandardOutput=syslog
+StandardError=syslog
 
+EnvironmentFile=/etc/conf.d/6in4
 RemainAfterExit=yes
 ExecStart=/usr/sbin/ip tunnel add $if_name mode sit remote $server_ipv4 local $client_ipv4 ttl $tunnel_ttl
 ExecStart=/usr/sbin/ip link set $if_name up mtu $link_mtu
