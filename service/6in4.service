@@ -1,0 +1,17 @@
+[Unit]
+Description=6in4 tunnel
+Wants=update-addresses.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/conf.d/6in4
+
+RemainAfterExit=yes
+ExecStart=/usr/sbin/ip tunnel add $if_name mode sit remote $server_ipv4 local $client_ipv4 ttl $tunnel_ttl
+ExecStart=/usr/sbin/ip link set $if_name up mtu $link_mtu
+ExecStartPost=/usr/sbin/ip addr add $client_ipv6 dev $if_name ; /usr/sbin/ip route add ::/0 dev $if_name
+
+ExecStop=/usr/sbin/ip link set $if_name down ; /usr/sbin/ip tunnel del $if_name
+
+[Install]
+WantedBy=network.target
