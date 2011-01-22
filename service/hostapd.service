@@ -1,0 +1,9 @@
+[Unit]
+Description=Wireless access point daemon
+
+[Service]
+EnvironmentFile=/etc/conf.d/hostapd
+ExecStart=/usr/bin/hostapd -P $HOSTAPD_PID $HOSTAPD_CONF
+
+[Install]
+WantedBy=multi-user.target
