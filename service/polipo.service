@@ -3,8 +3,6 @@ Description=polipo Proxy
 Wants=network.target
 
 [Service]
-StandardOutput=syslog
-StandardError=syslog
 ExecStart=/usr/bin/polipo
 ExecReload=/bin/kill -USR1 $MAINPID
 
