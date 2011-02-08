@@ -4,7 +4,6 @@ Description=6in4 tunnel
 [Service]
 Type=oneshot
 StandardOutput=syslog
-StandardError=syslog
 
 EnvironmentFile=/etc/conf.d/6in4
 RemainAfterExit=yes

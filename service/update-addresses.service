@@ -5,7 +5,6 @@ Requires=network.target
 [Service]
 User=nobody
 StandardOutput=syslog
-StandardError=syslog
 EnvironmentFile=/etc/conf.d/update-urls
 ; I suggest at least CURL_ARGS='--silent --show-error'
 ExecStart=/usr/bin/curl $CURL_ARGS $UPDATE_URLS
