@@ -7,8 +7,7 @@ StandardOutput=syslog
 
 EnvironmentFile=/etc/conf.d/6in4
 RemainAfterExit=yes
-ExecStartPre=/sbin/modprobe sit
-ExecStart=/usr/sbin/ip tunnel add $if_name mode sit remote $server_ipv4 local $client_ipv4 ttl $tunnel_ttl
+ExecStartPre=/usr/sbin/ip tunnel add $if_name mode sit remote $server_ipv4 local $client_ipv4 ttl $tunnel_ttl
 ExecStart=/usr/sbin/ip link set $if_name up mtu $link_mtu
 ExecStartPost=/usr/sbin/ip addr add $client_ipv6 dev $if_name ; /usr/sbin/ip route add ::/0 dev $if_name
 
