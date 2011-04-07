@@ -1,11 +1,11 @@
 [Unit]
-Description=Mapping ports with UPnP
+Description=Mapping ports with UPnP IGD
 
 [Service]
 RemainAfterExit=yes
 StandardOutput=syslog
 User=nobody
-EnvironmentFile=/etc/conf.d/upnp
+EnvironmentFile=/etc/conf.d/upnp-igd
 ExecStart=/usr/bin/upnpc -r $port_mapping
 ExecStop=/usr/bin/upnpc -d $port_mapping
 
