@@ -1,0 +1,14 @@
+[Unit]
+Description=Mapping ports with UPnP
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+StandardOutput=syslog
+User=nobody
+EnvironmentFile=/etc/conf.d/upnp
+ExecStart=/usr/bin/upnpc -r $port_mapping
+ExecStop=/usr/bin/upnpc -d $port_mapping
+
+[Install]
+WantedBy=multi-user.target
